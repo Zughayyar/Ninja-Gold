@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Money</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        <div class="score">
+            <h4> Your Gold: </h4>
+            <label> {{ session['score'] }} </label>
+        </div>
+
+        <div class="forms">
+            <div class="forms-submit">
+                <h3>Farm</h3>
+                <p>(earns 10-20 golds)</p>
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="building" value="farm">
+                    <input type="submit" value="Find Gold!" class="submit-button">
+                </form>
+            </div>
+            <div class="forms-submit">
+                <h3>Cave</h3>
+                <p>(earns 5-10 golds)</p>
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="building" value="cave">
+                    <input type="submit" value="Find Gold!" class="submit-button">
+                </form>
+            </div>
+            <div class="forms-submit">
+                <h3>House</h3>
+                <p>(earns 2-5 golds)</p>
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="building" value="house">
+                    <input type="submit" value="Find Gold!" class="submit-button">
+                </form>
+            </div>
+            <div class="forms-submit">
+                <h3>Casino</h3>
+                <p>(earns/takes 0-50 golds)</p>
+                <form action="/process_money" method="post">
+                    <input type="hidden" name="building" value="casino">
+                    <input type="submit" value="Find Gold!" class="submit-button">
+                </form>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <h4>Activities:</h4>
+        <div class="Aactivities">
+            <ul>
+            {% for i in session['message'] %}
+            <li>  {{ i }}  </li>  
+            {% endfor %}
+            </ul> 
+        </div>
+
+
+    </div>
+
+    <form action="/destroy_session" method="post">
+        <button class="button-reset" >Reset Game!</button>
+    </form>
+</body>
+</html>
