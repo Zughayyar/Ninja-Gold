@@ -84,5 +84,13 @@ Anas Zughayyar
     box-shadow: 2px 2px 2px black;
     width: 800px;
     height: 220px;
-    overflow: scroll;
+    overflow-y: scroll;
+}
+
+.log1 {
+    color: green;
+}
+
+.log2 {
+    color: red;
 }

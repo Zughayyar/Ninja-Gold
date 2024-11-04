@@ -8,6 +8,7 @@ app.secret_key = "keep it safe"
 def index():
     if 'score' not in session:
         session['score'] = 0
+        session['message'] = []
     return render_template("index.html")
     
 @app.route('/process_money', methods=['POST'])
@@ -28,9 +29,9 @@ def process_money():
         session['message'].insert(0,f'Earned {rand_house} golds from the house!')
     
     if request.form['building'] == 'casino':
-        rand_casino = randrange(-50,50,1)
-        session['score'] += rand_casino
-        session['message'].insert(0,f'Earned {rand_casino} golds from the casino!')
+        session['rand_casino'] = randrange(-50,50,1)
+        session['score'] += session['rand_casino']
+        session['message'].insert(0,f'Earned {session['rand_casino']} golds from the casino!')
     
     return redirect('/')
 
